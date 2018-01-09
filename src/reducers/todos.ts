@@ -8,6 +8,12 @@ const initialState: TodoStoreState = [{
 }];
 
 export default handleActions<TodoStoreState, TodoItemData>({
+  [Actions.INIT]: (state, action) => {
+    return [{
+      ...action.payload,
+    }, ...state];
+  },
+
   [Actions.ADD_TODO]: (state, action) => {
     return [{
       id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,

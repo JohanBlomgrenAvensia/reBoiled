@@ -14,15 +14,32 @@ export namespace App {
   }
 
   export interface State {
-    /* empty */
+    todos: Array<TodoItemData>;
   }
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 export class App extends React.Component<App.Props, App.State> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: []
+    };
+  }
+
+
+  componentDidMount() {
+    fetch("http://localhost:8000/")
+    .then(function(response) { return response.json(); })
+    .then((response: any) => {
+      const todos = response;
+      //this.setState({todos})
+    })
+  }
 
   render() {
-    const { todos, actions, children } = this.props;
+    const {todos, actions, children } = this.props;
     return (
       <div className={style.normal}>
         <Header addTodo={actions.addTodo} />
@@ -41,6 +58,6 @@ function mapStateToProps(state: RootState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions as any, dispatch)
+    actions: bindActionCreators(TodoActions as any, dispatch),
   };
 }

@@ -76,7 +76,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     const { todos, actions } = this.props;
     const { filter } = this.state;
 
-    const filteredTodos = todos.filter(TODO_FILTERS[filter]);
+    const filteredTodos = todos ? todos.filter(TODO_FILTERS[filter]): [];
     const completedCount = todos.reduce((count, todo) => {
       return todo.completed ? count + 1 : count;
     }, 0);
