@@ -1,17 +1,11 @@
 import { handleActions } from 'redux-actions';
 import * as Actions from '../constants/actions';
 
-const initialState: TodoStoreState = [{
-  id: 0,
-  text: 'Use Redux',
-  completed: false
-}];
+const initialState: TodoStoreState = [];
 
 export default handleActions<TodoStoreState, TodoItemData>({
   [Actions.INIT]: (state, action) => {
-    return [{
-      ...action.payload,
-    }, ...state];
+    return [...state, ...action.payload as any]
   },
 
   [Actions.ADD_TODO]: (state, action) => {

@@ -34,6 +34,7 @@ export class App extends React.Component<App.Props, App.State> {
     .then(function(response) { return response.json(); })
     .then((response: any) => {
       const todos = response;
+      this.props.actions.init(todos);
       //this.setState({todos})
     })
   }

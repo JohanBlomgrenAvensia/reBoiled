@@ -43,11 +43,15 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mssql": "^4.1.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1"
+    "redux-actions": "^2.2.1",
+    "redux-devtools-extension": "^2.13.2"
   }
 }
